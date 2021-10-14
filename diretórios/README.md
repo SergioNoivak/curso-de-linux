@@ -103,3 +103,82 @@ O comando ``du`` lista o tamanho dos arquivos no linux:
 20K     home/
 ````
 
+## Mais diretórios
+
+O diretório ``mnt`` é usado como herança do debian para montar uma partição, o diretório ``opt`` guarda softwares grandes, por exemplo quando o virtualbox é instalado ele vai para ``opt``. No diretório `proc` contém processos que estão sendo executados no momento, normalmente os nomes dos processos não são os mesmos nomes dos arquivos. O diretório ``root`` é como se fosse o home, porém para o usuário super usuario. O diretório `bin` contém executáveis para cada usuário `sbin` contém comandos usados para o super usuário. O diretório `sys` contém informações sobre o sistema operacional em execução, como gerenciamento de energia, barramento, hypervisor, kernel. 
+
+​	No diretório ``tmp`` qualquer usuário pode entrar nesse diretório, usado normalmente para aplicações que guardam informações temporárias , por exemplo fazer cópia de um diretório para outro. O diretório ``usr`` guarda jogos executáveis. Quando um software é instalado por padrão no linux vem para ``\lib``, e quando se instala ele via terceiros vem para ``usr\lib``, aplicações que não fazem parte do core.  O diretório `usr\src` contém códigos fontes de instalador do linux. O diretório `var` guarda logs de execução do sistema. 
+
+
+
+## Comandos 
+
+O comando `mkdir` cria diretórios no linux. por exemplo, o comando:
+
+````bash
+mkdir -p pasta1/pasta2/pasta3
+````
+
+cria uma pasta1 com subpastas. O comando `mv` muda o diretório de lugar:
+
+````bash
+mv pasta1\pasta2 .
+````
+
+Exemplo de mudança de diretório:
+
+````bash
+
+[root@65ccdc0d5356 /]# mkdir -p pasta1/pasta2/pasta3
+[root@65ccdc0d5356 /]# ls
+anaconda-post.log  dev  home  lib64  mnt  pasta1  root  sbin  sys  usr
+bin                etc  lib   media  opt  proc    run   srv   tmp  var
+[root@65ccdc0d5356 /]# mkdir -p pasta10/pasta20/pasta30
+[root@65ccdc0d5356 /]# ls
+anaconda-post.log  dev  home  lib64  mnt  pasta1   proc  run   srv  tmp  var
+bin                etc  lib   media  opt  pasta10  root  sbin  sys  usr
+[root@65ccdc0d5356 /]# mv pasta1/pasta2 pasta10
+[root@65ccdc0d5356 /]# cd pasta10
+[root@65ccdc0d5356 pasta10]# ls
+pasta2  pasta20
+[root@65ccdc0d5356 pasta10]# cd pasta2
+[root@65ccdc0d5356 pasta2]# ls
+pasta3
+[root@65ccdc0d5356 pasta2]# cd ../
+[root@65ccdc0d5356 pasta10]# ls
+pasta2  pasta20
+[root@65ccdc0d5356 pasta10]#
+````
+
+Para renomear uma pasta utilizar `mv` também, basta chamar:
+
+````bash
+mv pasta1 pastaFotos	
+````
+
+porque se a pasta não existir ele cria e muda automaticamente.
+
+O comando `find` encontra arquivos em um diretório linux:
+
+````bash
+find . -name "VIDEO_2012"
+````
+
+O comando `cat` vai listar o que tem dentro de um arquivo:
+
+````bash 
+[root@65ccdc0d5356 pasta10]# cat arquivo1.txt 
+banana 
+maçã
+pera
+
+````
+
+O comando grep pesquisa uma string em um diretório:
+
+````bash
+
+[root@65ccdc0d5356 pasta10]# grep ma -r .
+./arquivo1.txt:maçã
+````
+
